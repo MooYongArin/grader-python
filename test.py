@@ -1,3 +1,1 @@
-x = input()
-
-print(x[0])
+print(int(4.8))

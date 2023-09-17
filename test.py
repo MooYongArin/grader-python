@@ -1,7 +1,3 @@
-perform = input().strip()
+n = "123456"
 
-print(perform)
-for item in perform:
-    print(item)
-    if type(item) == int:
-        print(item)
+print(n[0])

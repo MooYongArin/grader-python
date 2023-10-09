@@ -27,7 +27,7 @@ def character_repetition(t):
     return False
 def number_sequence(t):
     all_num = '1234567890'
-    addition_cases = ['0123']
+    addition_cases = ['0123','9012','8901','3210','2109','1098']
     for j in range(len(all_num)-3):
         for i in range(len(t)-3):
             if t[i:i+4] == all_num[j:j+4] or t[i:i+4] == all_num[j+4:j:-1] or t[i:i+4] == all_num[3::-1] or t[i:i+4] in addition_cases :

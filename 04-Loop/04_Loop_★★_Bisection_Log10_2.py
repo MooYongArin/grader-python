@@ -1,18 +1,20 @@
 a = float(input())
+L = 0
 U = 0
-L = 1
+copy_a = a
 while True:
-    x = a//10
-    a = a//10
+    x = copy_a//10
+    copy_a = copy_a//10
     U += 1
     if x == 0:
         break
-epsilon = 10**(-10)
+
 x = (L + U) / 2 
-while abs(a- x**2) > epsilon*max(a,x**2):
-    if 10**x < a:
-        L = x
-    else:
+while abs(a- 10**x) > 1e-10*max(a,10**x):
+    if 10**x > a:
         U = x
+    else:
+        L = x
     x = (L + U) / 2
+
 print(round(x,6))

@@ -1,5 +1,7 @@
-str1 = input().lower()
-str2 = input().lower()
+in_str1 = input()
+in_str2 = input()
+str1 = in_str1.lower()
+str2 = in_str2.lower()
 
 dct1 = {}
 dct2 = {}
@@ -19,41 +21,70 @@ for item in str2:
 lst1 = []
 lst2 = []
 for item in dct1:
-    if dct1[item] > dct2[item]:
-        x = dct1[item] - dct2[item]
-        if x>1:
-            lst1.append(['remove',item,str(x)+"'s"])
+    if item not in dct2:
+        x = dct1[item]
+        if dct1[item] > 1:
+            lst1.append(['remove',x,str(item)+"'s"])
         else:
-            lst1.append(['remove',item,x])
-    elif dct1[item] < dct2[item]:
-        x = dct2[item] - dct1[item]
-        if x>1:
-            lst2.append(['remove',item,str(x)+"'s"])
+            lst1.append(['remove',x,item])
+for item in dct2:
+    if item not in dct1:
+        x = dct2[item]
+        if dct2[item] > 1:
+            lst2.append(['remove',x,str(item)+"'s"])
         else:
-            lst2.append(['remove',item,x])
-check = True
+            lst2.append(['remove',x,item])
+for item in dct1:
+    if item in dct2:
+        if dct1[item] > dct2[item]:
+            x = dct1[item] - dct2[item]
+            if x>1:
+                lst1.append(['remove',x,str(item)+"'s"])
+            else:
+                lst1.append(['remove',x,item])
+        elif dct1[item] < dct2[item]:
+            x = dct2[item] - dct1[item]
+            if x>1:
+                lst2.append(['remove',x,str(item)+"'s"])
+            else:
+                lst2.append(['remove',x,item])
+
+check1 = True
+check2 = True
 if lst1 == []:
-    lst1.append("None")
-    check = False
+    check1 = False
 if lst2 == []:
-    lst2.append("None")
-    check = True
-    
-print(str1)
-for item in lst1:
-    if item == 'None':
-        print(' - None')
-        break
-    print(' - ',end="")
-    for i in item:
-        print(str(i) + ' ',end="")
-    print()
-print(str2)
+    check2 = False
+
+# เรียงตัวอีกษร
+
 for item in lst2:
-    if item == 'None':
-        print(' - None')
-        break
-    print(' - ',end="")
-    for i in item:
-        print(str(i) + ' ',end="")
-    print()
+    item.insert(0,item[2][0])
+lst2.sort()
+for item in lst2:
+    item.pop(0)
+for item in lst1:
+    item.insert(0,item[2][0])
+lst1.sort()
+for item in lst1:
+    item.pop(0)
+
+print(in_str1)
+if check1:
+    for item in lst1:
+        if len(item) == 3:
+            print(' -',item[0],item[1],item[2])
+        elif len(item) == 4:
+            print(' -',item[0],item[1],str(item[2])+"'s")
+else:
+    print(' -','None')
+print(in_str2)
+if check2:
+    for item in lst2:
+        if len(item) == 3:
+            print(' -',item[0],item[1],item[2])
+        elif len(item) == 4:
+            print(' -',item[0],item[1],str(item[2])+"'s")
+else:
+    print(' -','None')
+

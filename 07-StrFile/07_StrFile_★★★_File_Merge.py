@@ -12,13 +12,24 @@ filename,filename_2 = input().split()
 
 f_1 = open(filename)
 f_2 = open(filename_2)
-print(f_1.readline())
+start1,gra1 = read_next(f_1)
+start2,gra2 = read_next(f_2)
 
+while start1 != '' and start2 != '':
+    if start1[8:] < start2[8:] or (start1[8:] == start2[8:] and start1 < start2):
+        print(start1,gra1)
+        start1,gra1 = read_next(f_1)
+    else:
+        print(start2,gra2)
+        start2,gra2 = read_next(f_2)
 
-# print(read_next(f_1))
-# print(read_next(f_2))
-# keep = ""
-# while True:
-#     if keep == read_next(f_1)[0][8:]:
-#         print(read_next(f_1))
-#         keep = read_next(f_1)[0][8:]
+while start1 != '':
+    print(start1,gra1)
+    start1,gra1 = read_next(f_1)
+
+while start2 != '':
+    print(start2,gra2)
+    start2,gra2 = read_next(f_2)
+
+f_1.close()
+f_2.close()

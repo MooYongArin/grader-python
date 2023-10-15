@@ -26,11 +26,12 @@ def diff(h1,m1,s1,h2,m2,s2):
             ha = h2-h1-1
     else:
         sa = s2-s1+60
+        m2 -= 1
         if m2>=m1:
-            ma = m2-m1-1
+            ma = m2-m1
             ha = h2-h1
         else:
-            ma = m2-m1+60-1
+            ma = m2-m1+60
             ha = h2-h1-1
     
     return ha,ma,sa

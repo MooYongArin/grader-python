@@ -1,3 +1,3 @@
 lst=[]
 lst += []
-print(lst)
+print('10'>'2')
